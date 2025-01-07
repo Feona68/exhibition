@@ -1,0 +1,159 @@
+body {
+  margin: 0; /* Remove default margin */
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(to bottom, #5adbec, #09064a); /* Vibrant gradient */
+  background-attachment: fixed; /* Make the gradient fixed when scrolling */
+  background-size: cover; /* Ensure gradient covers the entire page */
+  color: #ffffff; /* Default text color for better readability */
+}
+
+/* Team Section Styling */
+.team-section {
+  text-align: center;
+  padding: 50px 20px;
+}
+.team-section h2 {
+  font-size: 2.5rem;
+  color: #0d47a1;
+  margin-bottom: 40px;
+}
+
+.circle-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+}
+
+.circle-info-wrapper {
+  display: flex;
+  flex-direction: column; /* Stack vertically */
+  align-items: center;
+  gap: 10px; /* Space between circle and text */
+}
+
+.circle {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: #bbdefb;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  margin-left: -100px; /* Overlap left side only */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 1;
+  
+}
+
+.circle:first-child {
+  margin-left: 0; /* Ensures the first circle is properly aligned */
+}
+
+.circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures images fit perfectly within the circle */
+}
+
+.circle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  z-index: 2; /* Ensures hovered circle is on top */
+}
+
+/* Adjust circle spacing to avoid double overlapping */
+.circle-container .circle {
+  margin-left: -50px; /* Overlap left side only */
+}
+
+.circle:nth-child(5) {
+  margin-left: -40px; /* Slight adjustment for the 5th circle */
+}
+
+.circle:nth-child(7) {
+  margin-right: -40px; /* Slight adjustment for the 5th circle */
+}
+
+/* Ensure text is positioned below each circle */
+.info {
+  margin-top: 15px;
+  text-align: center;
+  position: relative; /* Ensure proper stacking */
+  z-index: 2; /* Place above other elements */
+}
+
+.info h3 {
+  font-size: 1.2rem;
+  color: #052759; /* Ensure it's dark enough */
+  margin: 5px 0;
+}
+
+.info p {
+  font-size: 1rem;
+  color: #092d3e; /* Dark enough for visibility */
+  margin: 0;
+}
+
+.center-circle {
+  background: #0d47a1;
+  color: #ffffff;
+  z-index: 3; /* Keeps the center circle on top by default */
+}
+
+@media (max-width: 1200px) {
+  .circle {
+    width: 150px; /* Scale down circle size */
+    height: 150px;
+  }
+
+  .info h3 {
+    font-size: 1rem; /* Adjust font size */
+  }
+
+  .info p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .team-section h2 {
+    font-size: 2rem; /* Scale down heading size */
+  }
+
+  .circle {
+    width: 120px; /* Further scale down for smaller screens */
+    height: 120px;
+  }
+
+  .info h3 {
+    font-size: 0.9rem; /* Adjust font size for smaller screens */
+  }
+
+  .info p {
+    font-size: 0.8rem;
+  }
+
+  .circle-container {
+    gap: 30px; /* Reduce gap between items */
+  }
+}
+
+@media (max-width: 480px) {
+  .team-section {
+    padding: 30px 15px; /* Adjust padding for smaller screens */
+  }
+
+  .circle {
+    width: 100px; /* Smallest circle size for mobile devices */
+    height: 100px;
+  }
+
+  .info h3 {
+    font-size: 0.8rem; /* Smaller font size for mobile */
+  }
+
+  .info p {
+    font-size: 0.7rem;
+  }
+}
