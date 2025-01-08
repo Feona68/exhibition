@@ -1,10 +1,10 @@
 body {
-  margin: 0; /* Remove default margin */
+  margin: 0;
   font-family: 'Arial', sans-serif;
-  background: linear-gradient(to bottom, #5adbec, #09064a); /* Vibrant gradient */
-  background-attachment: fixed; /* Make the gradient fixed when scrolling */
-  background-size: cover; /* Ensure gradient covers the entire page */
-  color: #ffffff; /* Default text color for better readability */
+  background: linear-gradient(to bottom, #5adbec, #09064a);
+  background-attachment: fixed;
+  background-size: cover;
+  color: #ffffff;
 }
 
 /* Team Section Styling */
@@ -12,10 +12,11 @@ body {
   text-align: center;
   padding: 50px 20px;
 }
+
 .team-section h2 {
   font-size: 2.5rem;
   color: #0d47a1;
-  margin-bottom: 40px;
+  margin-bottom: 100px;
 }
 
 .circle-container {
@@ -23,13 +24,14 @@ body {
   justify-content: center;
   align-items: flex-start;
   position: relative;
+  flex-wrap: wrap; /* Wrap circles on smaller screens */
 }
 
 .circle-info-wrapper {
   display: flex;
-  flex-direction: column; /* Stack vertically */
+  flex-direction: column;
   align-items: center;
-  gap: 10px; /* Space between circle and text */
+  gap: 10px;
 }
 
 .circle {
@@ -40,14 +42,22 @@ body {
   overflow: hidden;
   position: relative;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  margin-left: -100px; /* Overlap left side only */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   z-index: 1;
-  
+  margin: 0; /* Reset margin */
 }
 
 .circle:first-child {
-  margin-left: 0; /* Ensures the first circle is properly aligned */
+  margin-left: 0;
+}
+
+.circle:not(:nth-child(4)) {
+  margin-left: -50px; /* Overlap only one side for all except the 4th circle */
+}
+
+.circle:nth-child(4) {
+  margin: 0; /* Centered circle */
+  z-index: 3; /* Keeps it on top */
 }
 
 .circle img {
@@ -59,75 +69,63 @@ body {
 .circle:hover {
   transform: scale(1.1);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-  z-index: 2; /* Ensures hovered circle is on top */
+  z-index: 2;
 }
 
-/* Adjust circle spacing to avoid double overlapping */
-.circle-container .circle {
-  margin-left: -50px; /* Overlap left side only */
-}
-
-.circle:nth-child(5) {
-  margin-left: -40px; /* Slight adjustment for the 5th circle */
-}
-
-.circle:nth-child(7) {
-  margin-right: -40px; /* Slight adjustment for the 5th circle */
-}
-
-/* Ensure text is positioned below each circle */
 .info {
   margin-top: 15px;
   text-align: center;
-  position: relative; /* Ensure proper stacking */
-  z-index: 2; /* Place above other elements */
 }
 
 .info h3 {
   font-size: 1.2rem;
-  color: #052759; /* Ensure it's dark enough */
+  color: #052759;
   margin: 5px 0;
 }
 
 .info p {
   font-size: 1rem;
-  color: #092d3e; /* Dark enough for visibility */
+  color: #092d3e;
   margin: 0;
 }
 
 .center-circle {
   background: #0d47a1;
   color: #ffffff;
-  z-index: 3; /* Keeps the center circle on top by default */
 }
 
+/* Responsive Styles */
 @media (max-width: 1200px) {
   .circle {
-    width: 150px; /* Scale down circle size */
+    width: 150px;
     height: 150px;
   }
 
   .info h3 {
-    font-size: 1rem; /* Adjust font size */
+    font-size: 1rem;
   }
 
   .info p {
     font-size: 0.9rem;
   }
+
+  .circle:not(:nth-child(4)) {
+    margin-left: -40px; /* Adjust overlap for smaller screens */
+  }
 }
 
 @media (max-width: 768px) {
   .team-section h2 {
-    font-size: 2rem; /* Scale down heading size */
+    font-size: 2rem;
   }
 
   .circle {
-    width: 120px; /* Further scale down for smaller screens */
+    width: 120px;
     height: 120px;
   }
 
   .info h3 {
-    font-size: 0.9rem; /* Adjust font size for smaller screens */
+    font-size: 0.9rem;
   }
 
   .info p {
@@ -137,23 +135,31 @@ body {
   .circle-container {
     gap: 30px; /* Reduce gap between items */
   }
+
+  .circle:not(:nth-child(4)) {
+    margin-left: -30px; /* Further adjust overlap */
+  }
 }
 
 @media (max-width: 480px) {
   .team-section {
-    padding: 30px 15px; /* Adjust padding for smaller screens */
+    padding: 30px 15px;
   }
 
   .circle {
-    width: 100px; /* Smallest circle size for mobile devices */
+    width: 100px;
     height: 100px;
   }
 
   .info h3 {
-    font-size: 0.8rem; /* Smaller font size for mobile */
+    font-size: 0.8rem;
   }
 
   .info p {
     font-size: 0.7rem;
+  }
+
+  .circle:not(:nth-child(4)) {
+    margin-left: -20px; /* Minimal overlap for mobile */
   }
 }
